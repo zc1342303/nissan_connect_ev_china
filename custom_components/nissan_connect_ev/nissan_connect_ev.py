@@ -1,7 +1,6 @@
 import asyncio
 import json
 import logging
-import time
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -37,15 +36,14 @@ class NCData:
 
     async def async_get_overview(self):
         """获取概览信息"""
-        body = f'api=iov.evnissan.data.selInfo&appCode=nissan_ev&projectType=iov-ev&sign={self._config.get("sign")}&timestamp={int(time.time())}&userId={self._config.get("userid")}'
+        body = f'api=iov.evnissan.data.selInfo&appCode=nissan_ev&projectType=iov-ev&sign={self._config.get("sign")}&timestamp=1680960070&userId={self._config.get("userid")}'
         r = await self._session.post(OVERVIEW_URL, headers=self.headers, data=body, timeout=10)
         if r.status == 200:
             result = json.loads(await r.read())
-            print(result)
-            if result["status"] == 0:
+            if result["msg"] == 'SUCCESS':
                 self._info['battery_soc'] = result["rows"]["soc"]  # 剩余电量
             else:
-                raise InvalidData(f"get_balance error:{result['msg']}")
+                raise InvalidData(f"async_get_overview error: {result['msg']}")
         else:
             raise InvalidData(f"overview response status_code = {r.status_code}")
 

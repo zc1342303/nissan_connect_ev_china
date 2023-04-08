@@ -1,15 +1,19 @@
+import logging
+
 from homeassistant.const import (
     STATE_UNKNOWN
 )
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import DOMAIN
 
+_LOGGER = logging.getLogger(__name__)
+
 SENSORS = {
     'battery_soc': {
         'name': '剩余电量',
         'icon': 'hass:battery',
         'unit_of_measurement': '%',
-        'attributes': ['last_update']
+        'attributes': ['last_up_date']
     }
 }
 
@@ -19,10 +23,11 @@ async def async_setup_platform(hass, config, async_add_devices, discovery_info=N
     coordinator = hass.data[DOMAIN]
     data = coordinator.data
 
-    for cons_no, values in data.items():
-        for key in SENSORS.keys():
-            if key in values.keys():
-                sensors.append(NCSensor(coordinator, key))
+    _LOGGER.debug(data)
+
+    for key in SENSORS.keys():
+        if key in data.keys():
+            sensors.append(NCSensor(coordinator, key))
 
     async_add_devices(sensors, True)
 
