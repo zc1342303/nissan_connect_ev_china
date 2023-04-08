@@ -5,13 +5,13 @@ from datetime import timedelta
 import async_timeout
 
 import homeassistant.util.dt as dt_util
-from const import DOMAIN
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import discovery
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from homeassistant.helpers.event import async_track_point_in_utc_time
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
-from nissan_connect_ev import NCData, AuthFailed
+from .const import DOMAIN
+from .nissan_connect_ev import NCData, AuthFailed
 
 _LOGGER = logging.getLogger(__name__)
 

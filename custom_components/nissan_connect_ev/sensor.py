@@ -1,8 +1,8 @@
-from const import DOMAIN
 from homeassistant.const import (
     STATE_UNKNOWN
 )
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from .const import DOMAIN
 
 SENSORS = {
     'battery_soc': {
