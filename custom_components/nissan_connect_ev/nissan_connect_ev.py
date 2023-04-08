@@ -38,7 +38,7 @@ class NCData:
     async def async_get_overview(self):
         """获取概览信息"""
         body = f'api=iov.evnissan.data.selInfo&appCode=nissan_ev&projectType=iov-ev&sign={self._config.get("sign")}&timestamp={int(time.time())}&userId={self._config.get("userid")}'
-        r = await self._session.post(OVERVIEW_URL, headers=self.headers, body=body, timeout=10)
+        r = await self._session.post(OVERVIEW_URL, headers=self.headers, data=body, timeout=10)
         if r.status == 200:
             result = json.loads(await r.read())
             print(result)
