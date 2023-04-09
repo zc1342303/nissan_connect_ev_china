@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/nissan_connect_ev.iml" filepath="$PROJECT_DIR$/.idea/nissan_connect_ev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/nissan_connect_ev_china.iml" filepath="$PROJECT_DIR$/.idea/nissan_connect_ev_china.iml" />
     </modules>
   </component>
 </project>
