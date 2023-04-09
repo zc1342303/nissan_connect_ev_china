@@ -1,0 +1,13 @@
+{
+  "domain": "nissan_connect_ev_china",
+  "name": "Nissan Connect Ev",
+  "version": "v0.0.1",
+  "documentation": "https://github.com/zc1342303/nissan_connect_ev_china",
+  "issue_tracker": "https://github.com/zc1342303/nissan_connect_ev_china/issues",
+  "iot_class": "cloud_polling",
+  "dependencies": [],
+  "requirements": [],
+  "codeowners": [
+    "@zc1342303"
+  ]
+}

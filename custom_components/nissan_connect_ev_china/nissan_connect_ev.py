@@ -41,7 +41,17 @@ class NCData:
         if r.status == 200:
             result = json.loads(await r.read())
             if result["msg"] == 'SUCCESS':
-                self._info['battery_soc'] = result["rows"]["soc"]  # 剩余电量
+                self._info['battery_soc'] = int(result["rows"]["soc"])  # 剩余电量
+                self._info['recharge_mileage'] = float(result['rows']['endurKM']) / 10  # 续航里程 * 10
+                self._info['speed'] = int(result['rows']['speed'])  # 车速
+                self._info['left_back_door'] = 'Open' if result['rows']['lbDoor'] else 'Close'  # 左后车门
+                self._info['left_front_door'] = 'Open' if result['rows']['lfDoor'] else 'Close'  # 左前车门
+                self._info['right_back_door'] = 'Open' if result['rows']['rbDoor'] else 'Close'  # 右后车门
+                self._info['right_front_door'] = 'Open' if result['rows']['rfDoor'] else 'Close'  # 右前车门
+                self._info['last_time'] = result['rows']['lastTime']  # 最近更新时间
+                self._info['vin'] = result['rows']['vin']  # 车架号
+                # "offlineFlag": "0", 是否掉线
+
             else:
                 _LOGGER.warning(body)
                 raise InvalidData(f"async_get_overview error: {result['msg']}")

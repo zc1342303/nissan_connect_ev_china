@@ -14,7 +14,43 @@ SENSORS = {
         'icon': 'hass:battery',
         'unit_of_measurement': '%',
         'attributes': ['last_up_date']
-    }
+    },
+    'recharge_mileage': {
+        'name': '续航里程',
+        'icon': 'hass:map-marker-distance',
+        'unit_of_measurement': 'km',
+        'attributes': ['last_up_date']
+    },
+    'speed': {
+        'name': '车速',
+        'icon': 'hass:car-speed-limiter',
+        'unit_of_measurement': 'km/h',
+        'attributes': ['last_up_date']
+    },
+    'vin': {
+        'name': '车架号',
+        'icon': 'hass:numeric',
+    },
+    'last_time': {
+        'name': '更新时间',
+        'icon': 'hass:update',
+    },
+    'left_back_door': {
+        'name': '左后车门',
+        'icon': 'hass:car-door',
+    },
+    'left_front_door': {
+        'name': '左前车门',
+        'icon': 'hass:car-door',
+    },
+    'right_back_door': {
+        'name': '右后车门',
+        'icon': 'hass:car-door',
+    },
+    'right_front_door': {
+        'name': '右前车门',
+        'icon': 'hass:car-door',
+    },
 }
 
 
