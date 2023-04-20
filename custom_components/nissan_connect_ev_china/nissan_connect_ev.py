@@ -15,6 +15,29 @@ class InvalidData(Exception):
     pass
 
 
+stats_map: dict = {
+    'chargeStat': {
+        '0': '未充电',
+        '1': '未知状态1',
+        '2': '正在充电',
+        '3': '充电完成',
+        '4': '未知状态4',
+    },
+    'chargeType': {
+        '0': '慢充',
+        '1': '快充',
+        '2': '未知状态2',
+    },
+    'carLock': {
+        '0': '未知状态0',
+        '1': '未知状态1',
+        '2': '未知状态2',
+        '3': '已锁车',
+        '4': '未知状态4',
+    }
+}
+
+
 class NCData:
     headers = {
         "Host": "nvitapp.venucia.com",
@@ -50,7 +73,10 @@ class NCData:
                 self._info['right_front_door'] = 'Open' if result['rows']['rfDoor'] else 'Close'  # 右前车门
                 self._info['last_time'] = result['rows']['lastTime']  # 最近更新时间
                 self._info['vin'] = result['rows']['vin']  # 车架号
-                # "offlineFlag": "0", 是否掉线
+                self._info['offline'] = result['rows']['offlineFlag'] != '0'
+                self._info['recharge_stat'] = stats_map['chargeStat'][result['rows']['chargeStat']]
+                self._info['recharge_type'] = stats_map['chargeType'][result['rows']['chargeType']]
+                self._info['car_lock'] = stats_map['carLock'][result['rows']['carLock']]
 
             else:
                 _LOGGER.warning(body)

@@ -51,6 +51,22 @@ SENSORS = {
         'name': '右前车门',
         'icon': 'hass:car-door',
     },
+    'offline': {
+        'name': '掉线',
+        'icon': 'hass:help-network-outline',
+    },
+    'recharge_stat': {
+        'name': '充电状态',
+        'icon': 'hass:battery-charging-60',
+    },
+    'recharge_type': {
+        'name': '充电类型',
+        'icon': 'hass:battery-unknown',
+    },
+    'car_lock': {
+        'name': '锁车',
+        'icon': 'hass:lock-outline',
+    },
 }
 
 
